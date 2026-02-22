@@ -1,119 +1,119 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta charset="UTF-8" />
-<title>장명주 가챠 계산기</title>
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet" />
-<style>
-  :root {
-    --color-primary: #3a86ff;
-    --color-bg-light: #f7f9fc;
-    --color-text-light: #222;
-    --color-bg-dark: #121518;
-    --color-text-dark: #e0e0e0;
-    --color-border-light: #ccc;
-    --color-border-dark: #444;
-    --color-btn-bg-light: var(--color-primary);
-    --color-btn-bg-dark: #1e3a8a;
-  }
-  * { box-sizing: border-box; }
-  body {
-    font-family: 'Noto Sans', sans-serif;
-    max-width: 420px;
-    margin: 2em auto;
-    padding: 1.5em 2em;
-    background-color: var(--color-bg-light);
-    color: var(--color-text-light);
-    transition: background-color 0.3s ease, color 0.3s ease;
-    word-break: break-word;
-  }
-  body.dark {
-    background-color: var(--color-bg-dark);
-    color: var(--color-text-dark);
-  }
-  h2 {
-    text-align: center;
-    margin-bottom: 1em;
-    color: var(--color-primary);
-    font-size: 1.8rem;
-  }
-  label {
-    display: block;
-    margin-top: 1.3em;
-    font-weight: 700;
-    font-size: 1.05rem;
-  }
-  input[type="number"] {
-    width: 100%;
-    padding: 0.6em;
-    margin-top: 0.3em;
-    border: 1.5px solid var(--color-border-light);
-    border-radius: 8px;
-    font-size: 1.1rem;
-    transition: border-color 0.3s;
-  }
-  body.dark input[type="number"] {
-    border-color: var(--color-border-dark);
-    background-color: #222831;
-    color: var(--color-text-dark);
-  }
-  input[type="number"]:focus {
-    outline: none;
-    border-color: var(--color-primary);
-    box-shadow: 0 0 6px var(--color-primary);
-  }
-  button {
-    margin-top: 2em;
-    width: 100%;
-    padding: 1em;
-    background-color: var(--color-btn-bg-light);
-    border: none;
-    border-radius: 10px;
-    color: white;
-    font-weight: 700;
-    font-size: 1.25rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    user-select: none;
-  }
-  button:hover {
-    background-color: #2f6ad5;
-  }
-  body.dark button {
-    background-color: var(--color-btn-bg-dark);
-  }
-  body.dark button:hover {
-    background-color: #3257a8;
-  }
-  #toggleDark {
-    margin-bottom: 1.5em;
-    background-color: transparent;
-    border: 2px solid var(--color-primary);
-    color: var(--color-primary);
-    font-weight: 600;
-    font-size: 1rem;
-    border-radius: 10px;
-    padding: 0.5em 0;
-    user-select: none;
-    cursor: pointer;
-  }
-  #toggleDark:hover {
-    background-color: var(--color-primary);
-    color: white;
-  }
-  .result {
-    margin-top: 2em;
-    border-top: 3px solid var(--color-primary);
-    padding-top: 1.2em;
-    font-size: 1.2rem;
-    line-height: 1.6em;
-    white-space: pre-line;
-    color: inherit;
-    word-break: break-word;
-    text-align: center;
-  }
-</style>
+  <meta charset="UTF-8" />
+  <title>장명주 가챠 계산기</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --color-primary: #3a86ff;
+      --color-bg-light: #f7f9fc;
+      --color-text-light: #222;
+      --color-bg-dark: #121518;
+      --color-text-dark: #e0e0e0;
+      --color-border-light: #ccc;
+      --color-border-dark: #444;
+      --color-btn-bg-light: var(--color-primary);
+      --color-btn-bg-dark: #1e3a8a;
+    }
+    * { box-sizing: border-box; }
+    body {
+      font-family: 'Noto Sans', sans-serif;
+      max-width: 420px;
+      margin: 2em auto;
+      padding: 1.5em 2em;
+      background-color: var(--color-bg-light);
+      color: var(--color-text-light);
+      transition: background-color 0.3s ease, color 0.3s ease;
+      word-break: break-word;
+    }
+    body.dark {
+      background-color: var(--color-bg-dark);
+      color: var(--color-text-dark);
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 1em;
+      color: var(--color-primary);
+      font-size: 1.8rem;
+    }
+    label {
+      display: block;
+      margin-top: 1.3em;
+      font-weight: 700;
+      font-size: 1.05rem;
+    }
+    input[type="number"] {
+      width: 100%;
+      padding: 0.6em;
+      margin-top: 0.3em;
+      border: 1.5px solid var(--color-border-light);
+      border-radius: 8px;
+      font-size: 1.1rem;
+      transition: border-color 0.3s;
+    }
+    body.dark input[type="number"] {
+      border-color: var(--color-border-dark);
+      background-color: #222831;
+      color: var(--color-text-dark);
+    }
+    input[type="number"]:focus {
+      outline: none;
+      border-color: var(--color-primary);
+      box-shadow: 0 0 6px var(--color-primary);
+    }
+    button {
+      margin-top: 2em;
+      width: 100%;
+      padding: 1em;
+      background-color: var(--color-btn-bg-light);
+      border: none;
+      border-radius: 10px;
+      color: white;
+      font-weight: 700;
+      font-size: 1.25rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      user-select: none;
+    }
+    button:hover {
+      background-color: #2f6ad5;
+    }
+    body.dark button {
+      background-color: var(--color-btn-bg-dark);
+    }
+    body.dark button:hover {
+      background-color: #3257a8;
+    }
+    #toggleDark {
+      margin-bottom: 1.5em;
+      background-color: transparent;
+      border: 2px solid var(--color-primary);
+      color: var(--color-primary);
+      font-weight: 600;
+      font-size: 1rem;
+      border-radius: 10px;
+      padding: 0.5em 0;
+      user-select: none;
+      cursor: pointer;
+    }
+    #toggleDark:hover {
+      background-color: var(--color-primary);
+      color: white;
+    }
+    .result {
+      margin-top: 2em;
+      border-top: 3px solid var(--color-primary);
+      padding-top: 1.2em;
+      font-size: 1.2rem;
+      line-height: 1.6em;
+      white-space: pre-line;
+      color: inherit;
+      word-break: break-word;
+      text-align: center;
+    }
+  </style>
 </head>
 <body>
 
@@ -138,7 +138,7 @@
 <div class="result" id="result"></div>
 
 <script>
-const fixedUnitPrice = 19.72; // 장명주 1개 단가 (142,000원 충전 기준)
+const fixedUnitPrice = 19.72; // 장명주 1개 단가
 const totalCeiling = 150;
 
 function formatNumber(num) {
@@ -177,11 +177,12 @@ function calculate() {
 ✨ <strong>계산 결과</strong> ✨
 
 1회 가챠 비용: <strong>${formatNumber(Math.round(costPerDraw))}원</strong><br/>
-누적 가챠 횟수 (추가 천장 포함): <strong>${formatNumber(totalDraw)} 회</strong><br/>
+누적 가챠 횟수: <strong>${formatNumber(totalDraw)} 회</strong><br/>
 총 장명주 필요량: <strong>${formatNumber(totalJang)} 개</strong><br/>
 총 예상 비용: <strong>${formatNumber(Math.round(totalCost))}원</strong><br/>
 현재 보유 공명 구슬: <strong>${formatNumber(currentOrbs)} 개</strong><br/>
 필요한 공명 구슬: <strong>${formatNumber(neededOrbs)} 개</strong><br/>
+부족한 공명 구슬: <strong>${formatNumber(lackingOrbs)} 개</strong><br/>
 
 ⚠️ 장명주 1개 단가는 142,000원 충전 기준
   `;

@@ -96,6 +96,7 @@
     border-radius: 10px;
     padding: 0.5em 0;
     user-select: none;
+    cursor: pointer;
   }
   #toggleDark:hover {
     background-color: var(--color-primary);
@@ -138,6 +139,7 @@
 
 <script>
 const fixedUnitPrice = 19.72; // 장명주 1개 단가 (142,000원 충전 기준)
+const totalCeiling = 150;
 
 function formatNumber(num) {
   return num.toLocaleString();
@@ -155,26 +157,31 @@ function calculate() {
   const neededOrbs = Number(document.getElementById('neededOrbs').value);
   const jangPerDraw = Number(document.getElementById('jangmyeongjuPerDraw').value);
 
-  if (remainingDraw < 0 || remainingDraw > 150 || currentOrbs < 0 || neededOrbs < 0) {
+  if (
+    remainingDraw < 0 || remainingDraw > totalCeiling ||
+    currentOrbs < 0 || neededOrbs < 0
+  ) {
     alert('⚠️ 올바른 입력값을 넣어 주세요!');
     return;
   }
 
-  const costPerDraw = jangPerDraw * fixedUnitPrice;
-  const totalJang = remainingDraw * jangPerDraw;
-  const totalCost = totalJang * fixedUnitPrice;
   const lackingOrbs = Math.max(neededOrbs - currentOrbs, 0);
+  const totalDraw = remainingDraw + (lackingOrbs * totalCeiling);
+
+  const costPerDraw = jangPerDraw * fixedUnitPrice;
+  const totalJang = totalDraw * jangPerDraw;
+  const totalCost = totalJang * fixedUnitPrice;
   const costumeCost = neededOrbs * costPerDraw;
 
   document.getElementById('result').innerHTML = `
 ✨ <strong>계산 결과</strong> ✨
 
-남은 가챠 횟수: <strong>${formatNumber(remainingDraw)} 회</strong>
-남은 장명주 필요량: <strong>${formatNumber(totalJang)} 개</strong>
-남은 가챠 예상 비용: <strong>${formatNumber(Math.round(totalCost))}원</strong>
-현재 보유 공명 구슬: <strong>${formatNumber(currentOrbs)} 개</strong>
-필요한 공명 구슬: <strong>${formatNumber(neededOrbs)} 개</strong>
-부족한 공명 구슬: <strong>${formatNumber(lackingOrbs)} 개</strong>
+1회 가챠 비용: <strong>${formatNumber(Math.round(costPerDraw))}원</strong><br/>
+누적 가챠 횟수 (추가 천장 포함): <strong>${formatNumber(totalDraw)} 회</strong><br/>
+총 장명주 필요량: <strong>${formatNumber(totalJang)} 개</strong><br/>
+총 예상 비용: <strong>${formatNumber(Math.round(totalCost))}원</strong><br/>
+현재 보유 공명 구슬: <strong>${formatNumber(currentOrbs)} 개</strong><br/>
+필요한 공명 구슬: <strong>${formatNumber(neededOrbs)} 개</strong><br/>
 
 ⚠️ 장명주 1개 단가는 142,000원 충전 기준
   `;

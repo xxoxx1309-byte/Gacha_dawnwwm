@@ -122,13 +122,13 @@
 <button id="toggleDark" onclick="toggleDarkMode()">🌙 다크모드</button>
 
 <label for="remainingDrawCount">남은 가챠 천장 횟수</label>
-<input type="number" id="remainingDrawCount" value="55" min="0" max="150" />
+<input type="number" id="remainingDrawCount" value="0" min="0" max="150" />
 
 <label for="currentOrbs">현재 보유 공명 구슬 개수</label>
 <input type="number" id="currentOrbs" value="0" min="0" />
 
 <label for="neededOrbs">필요한 공명 구슬 개수</label>
-<input type="number" id="neededOrbs" value="1" min="0" />
+<input type="number" id="neededOrbs" value="0" min="0" />
 
 <label for="jangmyeongjuPerDraw">1회 장명주 사용량 (160 고정)</label>
 <input type="number" id="jangmyeongjuPerDraw" value="160" readonly />
@@ -175,13 +175,13 @@ function calculate() {
   document.getElementById('result').innerHTML = `
 ✨ <strong>계산 결과</strong> ✨
 
-1회 가챠 비용: <strong>${formatNumber(Math.round(costPerDraw))}원</strong><br/>
-총 누적 가챠 횟수: <strong>${formatNumber(totalDraw)} 회</strong><br/>
-총 장명주 필요량: <strong>${formatNumber(totalJang)} 개</strong><br/>
-총 예상 비용: <strong>${formatNumber(Math.round(totalCost))}원</strong><br/>
-현재 보유 공명 구슬: <strong>${formatNumber(currentOrbs)} 개</strong><br/>
-필요한 공명 구슬: <strong>${formatNumber(neededOrbs)} 개</strong><br/>
-부족한 공명 구슬: <strong>${formatNumber(lackingOrbs)} 개</strong><br/>
+1회 가챠 비용: <strong>${formatNumber(Math.round(costPerDraw))}원</strong>
+총 누적 가챠 횟수: <strong>${formatNumber(totalDraw)} 회</strong>
+총 장명주 필요량: <strong>${formatNumber(totalJang)} 개</strong>
+총 예상 비용: <strong>${formatNumber(Math.round(totalCost))}원</strong>
+현재 보유 공명 구슬: <strong>${formatNumber(currentOrbs)} 개</strong>
+필요한 공명 구슬: <strong>${formatNumber(neededOrbs)} 개</strong>
+부족한 공명 구슬: <strong>${formatNumber(lackingOrbs)} 개</strong>
 
 ⚠️ 장명주 1개 단가는 142,000원 충전 기준
   `;

@@ -1,187 +1,195 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8" />
-  <title>장명주 가챠 계산기</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-  <!-- 노토 산스 폰트 -->
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet" />
-  <style>
-    :root {
-      --color-primary: #3a86ff;
-      --color-bg-light: #f7f9fc;
-      --color-text-light: #222;
-      --color-bg-dark: #121518;
-      --color-text-dark: #e0e0e0;
-      --color-border-light: #ccc;
-      --color-border-dark: #444;
-      --color-btn-bg-light: var(--color-primary);
-      --color-btn-bg-dark: #1e3a8a;
-    }
-    * { box-sizing: border-box; }
-    body {
-      font-family: 'Noto Sans', sans-serif;
-      max-width: 420px;
-      margin: 2em auto;
-      padding: 1.5em 2em;
-      background-color: var(--color-bg-light);
-      color: var(--color-text-light);
-      transition: background-color 0.3s ease, color 0.3s ease;
-      word-break: break-word;
-    }
-    body.dark {
-      background-color: var(--color-bg-dark);
-      color: var(--color-text-dark);
-    }
-    h2 {
-      text-align: center;
-      margin-bottom: 1em;
-      color: var(--color-primary);
-      font-size: 1.8rem;
-    }
-    label {
-      display: block;
-      margin-top: 1.3em;
-      font-weight: 700;
-      font-size: 1.05rem;
-    }
-    input[type="number"] {
-      width: 100%;
-      padding: 0.6em;
-      margin-top: 0.3em;
-      border: 1.5px solid var(--color-border-light);
-      border-radius: 8px;
-      font-size: 1.1rem;
-      transition: border-color 0.3s;
-    }
-    body.dark input[type="number"] {
-      border-color: var(--color-border-dark);
-      background-color: #222831;
-      color: var(--color-text-dark);
-    }
-    input[type="number"]:focus {
-      outline: none;
-      border-color: var(--color-primary);
-      box-shadow: 0 0 6px var(--color-primary);
-    }
-    button {
-      margin-top: 2em;
-      width: 100%;
-      padding: 1em;
-      background-color: var(--color-btn-bg-light);
-      border: none;
-      border-radius: 10px;
-      color: white;
-      font-weight: 700;
-      font-size: 1.25rem;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-      user-select: none;
-    }
-    button:hover {
-      background-color: #2f6ad5;
-    }
-    body.dark button {
-      background-color: var(--color-btn-bg-dark);
-    }
-    body.dark button:hover {
-      background-color: #3257a8;
-    }
-    #toggleDark {
-      margin-bottom: 1.5em;
-      background-color: transparent;
-      border: 2px solid var(--color-primary);
-      color: var(--color-primary);
-      font-weight: 600;
-      font-size: 1rem;
-      border-radius: 10px;
-      padding: 0.5em 0;
-      user-select: none;
-    }
-    #toggleDark:hover {
-      background-color: var(--color-primary);
-      color: white;
-    }
-    .result {
-      margin-top: 2em;
-      border-top: 3px solid var(--color-primary);
-      padding-top: 1.2em;
-      font-size: 1.15rem;
-      line-height: 1.5em;
-      white-space: pre-line;
-      color: inherit;
-      word-break: break-word;
-    }
-  </style>
+<meta charset="UTF-8" />
+<title>장명주 가챠 계산기</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --color-primary: #3a86ff;
+    --color-bg-light: #f7f9fc;
+    --color-text-light: #222;
+    --color-bg-dark: #121518;
+    --color-text-dark: #e0e0e0;
+    --color-border-light: #ccc;
+    --color-border-dark: #444;
+    --color-btn-bg-light: var(--color-primary);
+    --color-btn-bg-dark: #1e3a8a;
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: 'Noto Sans', sans-serif;
+    max-width: 420px;
+    margin: 2em auto;
+    padding: 1.5em 2em;
+    background-color: var(--color-bg-light);
+    color: var(--color-text-light);
+    transition: background-color 0.3s ease, color 0.3s ease;
+    word-break: break-word;
+  }
+  body.dark {
+    background-color: var(--color-bg-dark);
+    color: var(--color-text-dark);
+  }
+  h2 {
+    text-align: center;
+    margin-bottom: 1em;
+    color: var(--color-primary);
+    font-size: 1.8rem;
+  }
+  label {
+    display: block;
+    margin-top: 1.3em;
+    font-weight: 700;
+    font-size: 1.05rem;
+  }
+  input[type="number"] {
+    width: 100%;
+    padding: 0.6em;
+    margin-top: 0.3em;
+    border: 1.5px solid var(--color-border-light);
+    border-radius: 8px;
+    font-size: 1.1rem;
+    transition: border-color 0.3s;
+  }
+  body.dark input[type="number"] {
+    border-color: var(--color-border-dark);
+    background-color: #222831;
+    color: var(--color-text-dark);
+  }
+  input[type="number"]:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 6px var(--color-primary);
+  }
+  button {
+    margin-top: 2em;
+    width: 100%;
+    padding: 1em;
+    background-color: var(--color-btn-bg-light);
+    border: none;
+    border-radius: 10px;
+    color: white;
+    font-weight: 700;
+    font-size: 1.25rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    user-select: none;
+  }
+  button:hover {
+    background-color: #2f6ad5;
+  }
+  body.dark button {
+    background-color: var(--color-btn-bg-dark);
+  }
+  body.dark button:hover {
+    background-color: #3257a8;
+  }
+  #toggleDark {
+    margin-bottom: 1.5em;
+    background-color: transparent;
+    border: 2px solid var(--color-primary);
+    color: var(--color-primary);
+    font-weight: 600;
+    font-size: 1rem;
+    border-radius: 10px;
+    padding: 0.5em 0;
+    user-select: none;
+  }
+  #toggleDark:hover {
+    background-color: var(--color-primary);
+    color: white;
+  }
+  .result {
+    margin-top: 2em;
+    border-top: 3px solid var(--color-primary);
+    padding-top: 1.2em;
+    font-size: 1.15rem;
+    line-height: 1.5em;
+    white-space: pre-line;
+    color: inherit;
+    word-break: break-word;
+  }
+</style>
 </head>
 <body>
 
-  <h2>장명주 가챠 계산기</h2>
+<h2>장명주 가챠 계산기</h2>
 
-  <button id="toggleDark" onclick="toggleDarkMode()">🌙 다크모드</button>
+<button id="toggleDark" onclick="toggleDarkMode()">🌙 다크모드</button>
 
-  <label for="remainingDrawCount">남은 천장 횟수</label>
-  <input type="number" id="remainingDrawCount" value="150" min="1" />
+<label for="remainingDrawCount">남은 가챠 천장 횟수</label>
+<input type="number" id="remainingDrawCount" value="150" min="1" />
 
-  <label for="currentOrbs">현재 보유 공명 구슬 개수</label>
-  <input type="number" id="currentOrbs" value="0" min="0" />
+<label for="currentOrbs">현재 보유 공명 구슬 개수</label>
+<input type="number" id="currentOrbs" value="0" min="0" />
 
-  <label for="jangmyeongjuPerDraw">1회 장명주 160 고정</label>
-  <input type="number" id="jangmyeongjuPerDraw" value="160" readonly />
+<label for="neededOrbs">필요한 공명 구슬 개수</label>
+<input type="number" id="neededOrbs" value="0" min="0" />
 
-  <button onclick="calculate()">계산하기</button>
+<label for="jangmyeongjuPerDraw">1회 장명주 사용량 (160 고정)</label>
+<input type="number" id="jangmyeongjuPerDraw" value="160" readonly />
 
-  <div class="result" id="result"></div>
+<button onclick="calculate()">계산하기</button>
 
-  <script>
-    const fixedUnitPrice = 19.72; // 142,000원 충전 기준 단가 고정
+<div class="result" id="result"></div>
 
-    // 소수점 이하가 0이면 정수로, 아니면 두 자리까지 반환
-    function formatNumber(num) {
-      return num % 1 === 0 ? num.toString() : num.toFixed(2);
+<script>
+  const fixedUnitPrice = 19.72; // 장명주 1개 단가 (142,000원 충전 기준)
+
+  // 한글 단위 변환 함수 (만원, 천원 단위)
+  function formatNumber(num) {
+    if (num >= 10000) {
+      const man = Math.floor(num / 10000);
+      const cheon = Math.floor((num % 10000) / 1000);
+      return `${man}만${cheon > 0 ? cheon + '천' : ''}원`;
+    } else if (num >= 1000) {
+      const cheon = Math.floor(num / 1000);
+      const baek = Math.floor((num % 1000) / 100);
+      return `${cheon}천${baek > 0 ? baek + '백' : ''}원`;
+    } else {
+      return `${Math.floor(num)}원`;
+    }
+  }
+
+  function toggleDarkMode() {
+    document.body.classList.toggle('dark');
+    const btn = document.getElementById('toggleDark');
+    btn.textContent = document.body.classList.contains('dark') ? '☀️ 라이트모드' : '🌙 다크모드';
+  }
+
+  function calculate() {
+    const remainingDraw = Number(document.getElementById('remainingDrawCount').value);
+    const currentOrbs = Number(document.getElementById('currentOrbs').value);
+    const neededOrbs = Number(document.getElementById('neededOrbs').value);
+    const jangPerDraw = Number(document.getElementById('jangmyeongjuPerDraw').value);
+
+    if (remainingDraw < 1 || currentOrbs < 0 || neededOrbs < 0) {
+      alert('⚠️ 입력값을 정확히 확인해 주세요!');
+      return;
     }
 
-    function toggleDarkMode() {
-      document.body.classList.toggle('dark');
-      const btn = document.getElementById('toggleDark');
-      btn.textContent = document.body.classList.contains('dark') 
-        ? '☀️ 라이트모드' 
-        : '🌙 다크모드';
-    }
+    const costPerDraw = jangPerDraw * fixedUnitPrice;
+    const totalJang = remainingDraw * jangPerDraw;
+    const totalCost = totalJang * fixedUnitPrice;
+    const lackingOrbs = Math.max(neededOrbs - currentOrbs, 0);
 
-    function calculate() {
-      const remainingDraw = Number(document.getElementById('remainingDrawCount').value);
-      const currentOrbs = Number(document.getElementById('currentOrbs').value);
-      const jangPerDraw = Number(document.getElementById('jangmyeongjuPerDraw').value);
+    // 비용 계산에서 '한정 의상 구매 예상 비용'은 입력한 필요한 공명 구슬로 계산
+    const costumeCost = neededOrbs * costPerDraw * 2;
 
-      if (remainingDraw < 1 || currentOrbs < 0) {
-        alert('⚠️ 입력값을 정확히 확인해 주세요!');
-        return;
-      }
-
-      const costPerDraw = jangPerDraw * fixedUnitPrice;
-      const totalJang = remainingDraw * jangPerDraw;
-      const totalCost = totalJang * fixedUnitPrice;
-
-      // 부족한 공명 구슬 계산
-      const neededOrbs = Math.max(remainingDraw - currentOrbs, 0);
-      const costumeCost = neededOrbs * costPerDraw * 2; // 의상 구매 시 공명 구슬 2개 필요
-
-      document.getElementById('result').innerHTML = `
+    document.getElementById('result').innerHTML = `
 ✨ <strong>계산 결과</strong> ✨
 
-1회 가챠 비용: <strong>${formatNumber(costPerDraw)} 원</strong>
+1회 가챠 비용: <strong>${formatNumber(costPerDraw)}</strong>
 남은 가챠 횟수: <strong>${remainingDraw.toLocaleString()} 회</strong>
 남은 장명주 필요량: <strong>${totalJang.toLocaleString()} 개</strong>
-남은 가챠 예상 비용: <strong>${formatNumber(totalCost)} 원</strong>
-현재 보유 공명 구슬: <strong>${currentOrbs.toLocaleString()} 개</strong>
-부족한 공명 구슬: <strong>${neededOrbs.toLocaleString()} 개</strong>
-한정 의상 구매 예상 비용 (부족 공명 구슬 2개 기준): <strong>${formatNumber(costumeCost)} 원</strong>
+남은 가챠 예상 비용: <strong>${formatNumber(totalCost)}</strong>
 
-⚠️ 장명주 1개 단가는 142,000원 충전 기준이며, 1장명주 = 19.72원으로 계산되었습니다.
-      `;
-    }
-  </script>
+⚠️ 장명주 1개 단가는 142,000원 충전 기준입니다.
+    `;
+  }
+</script>
 
 </body>
 </html>

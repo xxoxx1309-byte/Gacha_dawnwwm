@@ -164,11 +164,14 @@ function calculate() {
     return;
   }
 
-  // 부족한 공명 구슬 개수 계산
+  // 부족한 공명 구슬 개수
   const lackingOrbs = Math.max(neededOrbs - currentOrbs, 0);
 
-  // 남은 횟수에 부족 공명구슬 * 천장 주기 150회의 가챠 횟수 더함
+  // 누적 총 가챠 횟수 계산
   let totalDraw = remainingDraw + (lackingOrbs * totalCeiling);
+
+  // 마지막에 반드시 150회 차감, 음수 방지는 0으로
+  totalDraw = Math.max(totalDraw - 150, 0);
 
   // 단, 남은 횟수가 0이고 부족한 공명 구슬이 1 이상이면 천장 150만큼 더하는 것은 자연스러움
   // 입력한 남은 횟수만큼 돌면 공명 구슬 1개 얻는 조건은 계산에 반영되어 있음
